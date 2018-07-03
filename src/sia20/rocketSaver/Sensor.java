@@ -1,13 +1,12 @@
 package sia20.rocketSaver;
 
-
 import com.pi4j.io.i2c.I2CBus;
 import com.pi4j.io.i2c.I2CDevice;
 import com.pi4j.io.i2c.I2CFactory;
 
 import java.io.IOException;
 
-class Sensor {
+class Sensor{
 
     private I2CDevice device;
     Word word;
@@ -15,6 +14,7 @@ class Sensor {
         I2CBus bus;
         try {
             bus = I2CFactory.getInstance(I2CBus.BUS_1);
+            //bus = I2CFactory.getInstance(I2CBus.BUS_1);
             device = bus.getDevice(address);
         } catch (Exception e) {
             System.out.println(e.getLocalizedMessage());
