@@ -34,7 +34,7 @@ class BMP180 extends Slave {
         */
         configureSlaveRead(0xAA, 12, 0);
         configureSlaveRead(0xAA+12, 10, 1);
-        return readSlaveData(22);
+        return readSlaveData(35);
     }
 
     byte[] readRawData() {
