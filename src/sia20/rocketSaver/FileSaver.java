@@ -17,6 +17,11 @@ class FileSaver implements Runnable {
         File file = new File(pathName);
         file.mkdirs();
         try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
             bos.write(bytes);
             bos.flush();
