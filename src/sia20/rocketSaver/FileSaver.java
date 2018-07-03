@@ -15,12 +15,7 @@ class FileSaver implements Runnable {
 
     private void saveBytes(byte[] bytes, String pathName) {
         File file = new File(pathName);
-        file.mkdirs();
-        try {
-            file.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        file.getParentFile().mkdirs();
         try {
             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
             bos.write(bytes);
