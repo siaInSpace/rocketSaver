@@ -3,6 +3,7 @@
     <output-path>$PROJECT_DIR$/out/jars</output-path>
     <root id="archive" name="rocketSaver.jar">
       <element id="module-output" name="rocketSaver" />
+      <element id="library" level="project" name="com.pi4j:pi4j-core:1.1" />
     </root>
   </artifact>
 </component>
