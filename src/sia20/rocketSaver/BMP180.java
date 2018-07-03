@@ -24,12 +24,17 @@ class BMP180 extends Slave {
     }
 
     byte[] readCalibrationValuesRaw() {
+        /*
         byte[] calValues = new byte[22];
         byte[] ac = read(0xAA, 12);
         byte[] re = read(0xAA + 12, 10);
         System.arraycopy(ac, 0, calValues, 0, ac.length);
         System.arraycopy(re, 0, calValues, ac.length, re.length);
         return calValues;
+        */
+        configureSlaveRead(0xAA, 12, 0);
+        configureSlaveRead(0xAA, 10, 1);
+        return readSlaveData(22);
     }
 
     byte[] readRawData() {
