@@ -33,7 +33,7 @@ class BMP180 extends Slave {
         return calValues;
         */
         configureSlaveRead(0xAA, 12, 0);
-        configureSlaveRead(0xAA, 10, 1);
+        configureSlaveRead(0xAA+12, 10, 1);
         return readSlaveData(22);
     }
 
