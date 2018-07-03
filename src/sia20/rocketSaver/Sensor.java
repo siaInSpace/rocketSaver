@@ -14,7 +14,6 @@ class Sensor{
         I2CBus bus;
         try {
             bus = I2CFactory.getInstance(I2CBus.BUS_1);
-            //bus = I2CFactory.getInstance(I2CBus.BUS_1);
             device = bus.getDevice(address);
         } catch (Exception e) {
             System.out.println(e.getLocalizedMessage());

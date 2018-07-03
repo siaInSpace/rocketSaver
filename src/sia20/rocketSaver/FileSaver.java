@@ -17,6 +17,7 @@ class FileSaver implements Runnable {
         File file = new File(pathName);
         if (!file.exists()){
             try {
+                file.mkdirs();
                 file.createNewFile();
             }catch (IOException e){
                 System.out.println("Cannot create file at:" + file.getAbsolutePath());
