@@ -1,3 +1,4 @@
 Manifest-Version: 1.0
+Class-Path: pi4j-core-1.1.jar
 Main-Class: sia20.rocketSaver.Main
 
