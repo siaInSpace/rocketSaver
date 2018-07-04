@@ -1,5 +1,7 @@
 package sia20.rocketSaver;
 
+import java.util.ArrayList;
+
 class Slave {
     private MPU9250 master;
     private int address;
@@ -13,6 +15,33 @@ class Slave {
         return read(register, 1)[0];
     }
 
+    // reset all slaves to 0 read length
+    // set read length of active slaves
+    // activate slaves
+
+    void disabelAllSlaves(){
+        for (int i = 0; i < 5; i++) {
+            disableSlave(i);
+        }
+    }
+
+
+    private void disableSlave(int slave){
+         int slaveCtrlAddress = 0x27+(slave*3);
+         master.write(slaveCtrlAddress, (byte)0x00);
+    }
+
+    private void activateSlave(int slave){
+        int slaveCtrlAddress = 0x27+(slave*3);
+        master.write(slaveCtrlAddress,(byte)(master.read(slaveCtrlAddress) | 0x80));
+    }
+
+    void activateSlaves(int[] activeSlaves){
+        for (int slave : activeSlaves) {
+            activateSlave(slave);
+        }
+    }
+
     void configureSlaveRead(int register, int length, int slave){
         master.disableBypass();
         int slaveAddress = 0x25+(slave*3);
@@ -20,7 +49,7 @@ class Slave {
         int slaveCtrl = 0x27+(slave*3);
         master.write(slaveAddress, (byte)(0x80 | address));
         master.write(slaveRegister, (byte)register);
-        master.write(slaveCtrl, (byte)(0b10001111 | (0xF & length)));
+        master.write(slaveCtrl, (byte)(0b00001111 | (0xF & length)));
     }
 
     byte[] readSlaveData(int lenght){
