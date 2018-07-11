@@ -20,13 +20,13 @@ class Slave {
     // activate slaves
 
     void disabelAllSlaves(){
-        for (int i = 0; i < 5; i++) {
-            disableSlave(i);
+        master.write(0x27+(3*3), (byte)0x80);
+        for (int slave: new int[]{0, 1, 2, 4}) {
+            disabelAllSlaves();
         }
     }
 
-
-    private void disableSlave(int slave){
+    void disableSlave(int slave){
          int slaveCtrlAddress = 0x27+(slave*3);
          master.write(slaveCtrlAddress, (byte)0x00);
     }

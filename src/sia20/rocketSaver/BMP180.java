@@ -35,6 +35,7 @@ class BMP180 extends Slave {
         disabelAllSlaves();
         configureSlaveRead(0xAA, 12, 0);
         configureSlaveRead(0xAA+12, 10, 1);
+        disableSlave(3);
         activateSlaves(new int[] {0, 1});
         return readSlaveData(24);
     }
