@@ -50,6 +50,7 @@ public class Main {
     private void run() {
         Scanner in = new Scanner(System.in);
         String choice;
+        mpu.disableBypass();
         do {
             menu();
             choice = in.nextLine().toUpperCase();
