@@ -62,6 +62,7 @@ class Slave {
 
     byte[] read(int register, int length){
         configureSlaveRead(register, length, 0);
+        activateSlave(0);
         return readSlaveData(length);
     }
 
