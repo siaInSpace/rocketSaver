@@ -13,8 +13,12 @@ public class Main {
         for (byte calVal : data) {
             System.out.println(calVal);
         }
-    }
-
+        byte[] written = mpu.read(0x27, 7);
+        for (byte info :
+                written) {
+            System.out.println(info);
+        }
+    }   
 
     public static void main(String[] args){
         System.out.println("Hello Space!");
