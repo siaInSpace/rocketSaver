@@ -10,7 +10,7 @@ public class Main {
         mpu.configureSlaveRead(1, 0x77, 0xAA+12, 10);
         byte[] data = mpu.readExtSensorData(22);
         for (byte calVal : data) {
-            System.out.println(Integer.toBinaryString(calVal));
+            System.out.println(calVal);
         }
     }
 
