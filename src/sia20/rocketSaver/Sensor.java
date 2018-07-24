@@ -1,15 +1,15 @@
 package sia20.rocketSaver;
 
+
 import com.pi4j.io.i2c.I2CBus;
 import com.pi4j.io.i2c.I2CDevice;
 import com.pi4j.io.i2c.I2CFactory;
 
 import java.io.IOException;
 
-class Sensor{
+class Sensor {
 
     private I2CDevice device;
-    Word word;
     Sensor(int address){
         I2CBus bus;
         try {
@@ -18,7 +18,6 @@ class Sensor{
         } catch (Exception e) {
             System.out.println(e.getLocalizedMessage());
         }
-        word = new Word(this);
     }
 
     byte read(int regAddress){
@@ -27,6 +26,14 @@ class Sensor{
             data = (byte)device.read(regAddress);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        return data;
+    }
+
+    byte[] read(int regAddress, int length){
+        byte[] data = new byte[length];
+        for (int i = 0; i < length; i++) {
+            data[i] = read(regAddress+i);
         }
         return data;
     }
