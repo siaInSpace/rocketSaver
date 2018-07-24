@@ -9,7 +9,7 @@ class MPU9520 extends Sensor{
         int slaveAddr = 0x25 + (3*slaveNumber);
         int slaveReg = slaveAddr + 1;
         int slaveCtrl = slaveReg + 1;
-        write(slaveAddr, (byte)(0xFF & slaveAddress));
+        write(slaveAddr, (byte)(0x80 | slaveAddress));
         write(slaveReg, (byte)regAddress);
         write(slaveCtrl, (byte)length);
     }
