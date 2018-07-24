@@ -8,6 +8,7 @@ public class Main {
         mpu.resetAllSlaves();
         mpu.configureSlaveRead(0, 0x77, 0xAA, 12);
         mpu.configureSlaveRead(1, 0x77, 0xAA+12, 10);
+        mpu.activateSlaves(new int[] {1, 2});
         byte[] data = mpu.readExtSensorData(22);
         for (byte calVal : data) {
             System.out.println(calVal);
