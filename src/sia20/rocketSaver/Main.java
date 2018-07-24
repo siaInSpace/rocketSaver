@@ -9,11 +9,13 @@ public class Main {
         mpu.configureSlaveRead(0, 0x77, 0xAA, 12);
         mpu.configureSlaveRead(1, 0x77, 0xAA+12, 10);
         mpu.activateSlaves(new int[] {0, 1});
+        System.out.println("Data: ");
         byte[] data = mpu.readExtSensorData(22);
         for (byte calVal : data) {
             System.out.println(calVal);
         }
         byte[] written = mpu.read(0x27, 7);
+        System.out.println("Config: ");
         for (byte info :
                 written) {
             System.out.println(info);
