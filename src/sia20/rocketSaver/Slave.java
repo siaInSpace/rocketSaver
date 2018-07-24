@@ -8,6 +8,4 @@ public class Slave {
         this.master = master;
         this.adress = address;
     }
-
-
 }

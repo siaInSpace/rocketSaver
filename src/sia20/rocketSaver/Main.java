@@ -9,10 +9,15 @@ public class Main {
         mpu.configureSlaveRead(0, 0x77, 0xAA, 12);
         mpu.configureSlaveRead(1, 0x77, 0xAA+12, 10);
         mpu.activateSlaves(new int[] {0, 1});
+        byte[] firstData = mpu.readExtSensorData(22);
+        mpu.resetAllSlaves();
+        mpu.configureSlaveRead(0, 0x77, 0xAA, 10);
+        mpu.configureSlaveRead(1, 0x77, 0xAA+10, 12);
+        mpu.activateSlaves(new int[] {0, 1});
+        byte[] secondData = mpu.readExtSensorData(22);
         System.out.println("Data: ");
-        byte[] data = mpu.readExtSensorData(22);
-        for (byte calVal : data) {
-            System.out.println(calVal);
+        for (int i = 0; i < 22; i++) {
+            System.out.println(firstData[i] + ",  " + secondData[i]);
         }
     }
 
