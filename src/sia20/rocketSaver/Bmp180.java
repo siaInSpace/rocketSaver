@@ -33,6 +33,7 @@ class Bmp180 {
     }
 
     byte[] readRawPressure(){
+        master.disableBypass();
         master.configureSlaveWrite(0, 0x77, 0xF4, (byte)(0x34 + (oss.getVal()<<6)));
         try {
             Thread.sleep(oss.getTime());
