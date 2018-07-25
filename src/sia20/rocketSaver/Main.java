@@ -27,7 +27,7 @@ public class Main {
         data[3] = mpu.read(0x3B, 14);
 
         for (int i = 0; i < 4; i++) {
-            System.out.println(dataName[i] + ": { ");
+            System.out.print(dataName[i] + ": { ");
             for (byte dataByte : data[i]) {
                 System.out.print(dataByte + ", ");
             }
