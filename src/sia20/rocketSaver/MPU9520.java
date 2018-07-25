@@ -13,6 +13,15 @@ class MPU9520 extends Sensor{
         write(slaveReg, (byte)regAddress);
         write(slaveCtrl, (byte)length);
     }
+
+    void configureSlaveWrite(int slaveNumber, int slaveAddress, int regAddress, byte data){
+        int slaveAddr = 0x25 + (3*slaveNumber);
+        int slaveDataOut = 0x63 + slaveNumber;
+        write(slaveDataOut, data);
+        write(slaveAddr, (byte)(0x7F & slaveAddress));
+        write(slaveAddr+1, (byte)regAddress);
+        write(slaveAddr+2, (byte)0x00);
+    }
     void activateSlaves(int[] activeSlaves){
         int slaveCrtl = 0x27;
         for (int slave :
