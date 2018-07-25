@@ -29,7 +29,7 @@ public class Main {
         for (int i = 0; i < 4; i++) {
             System.out.println(dataName[i] + ": { ");
             for (byte dataByte : data[i]) {
-                System.out.println(dataByte + ", ");
+                System.out.print(dataByte + ", ");
             }
             System.out.println("}");
         }
