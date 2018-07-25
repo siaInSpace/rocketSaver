@@ -23,7 +23,7 @@ class Bmp180 {
         master.disableBypass();
         master.configureSlaveWrite(0, 0x77, 0xF4, (byte)(0x2E));
         try {
-            Thread.sleep(oss.getTime());
+            Thread.sleep(5);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
