@@ -41,6 +41,7 @@ class Bmp180 {
         }
         master.resetAllSlaves();
         master.configureSlaveRead(0, 0x77, 0xF6, 3);
+        master.activateSlaves(new int[] {0});
         return master.readExtSensorData(3);
     }
 

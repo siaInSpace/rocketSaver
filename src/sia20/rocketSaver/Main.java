@@ -18,7 +18,7 @@ public class Main {
     }
 
     private void readData(){
-        String[] dataName = {"Bmp calibration values", "bmp temperature", "bmp pressure", "mpu data"};
+        String[] dataName = {"bmp calibration values", "bmp temperature", "bmp pressure", "mpu data"};
         byte[][] data = new byte[4][];
 
         data[0] = bmp.readCalibrationValues();
