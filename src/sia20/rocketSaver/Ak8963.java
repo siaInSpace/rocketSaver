@@ -8,6 +8,7 @@ class Ak8963 {
     }
 
     void whoAmI(){
+        master.disableBypass();
         master.resetAllSlaves();
         master.configureSlaveRead(0, 0x0C, 0x00, 1);
         master.activateSlaves(new int[] {0});

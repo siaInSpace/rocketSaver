@@ -45,6 +45,7 @@ class Bmp180 {
     }
 
     void whoAmI(){
+        master.disableBypass();
         master.resetAllSlaves();
         master.configureSlaveRead(0, 0x77, 0xD0, 1);
         master.activateSlaves(new int[] {0});
