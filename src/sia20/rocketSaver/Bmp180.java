@@ -21,14 +21,14 @@ class Bmp180 {
 
     byte[] readRawTemp(){
         master.disableBypass();
-        master.configureSlaveWrite(0, 0x77, 0xF4, (byte)0x2E);
+        master.configureSlaveWrite(0, 0x77, 0xF4, (byte)(0x34 + 0x2E));
         try {
-            Thread.sleep(10);
+            Thread.sleep(5);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         master.resetAllSlaves();
-        master.configureSlaveRead(0, 0x77, 0x76, 2);
+        master.configureSlaveRead(0, 0x77, 0xF6, 2);
         master.activateSlaves(new int[] {0});
         return master.readExtSensorData(2);
     }
