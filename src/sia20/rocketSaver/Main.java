@@ -17,9 +17,28 @@ public class Main {
         mag.whoAmI();
     }
 
+    private void readData(){
+        String[] dataName = {"Bmp calibration values", "bmp temperature", "bmp pressure", "mpu data"};
+        byte[][] data = new byte[4][];
+
+        data[0] = bmp.readCalibrationValues();
+        data[1] = bmp.readRawTemp();
+        data[2] = bmp.readRawPressure();
+        data[3] = mpu.read(0x3B, 14);
+
+        for (int i = 0; i < 4; i++) {
+            System.out.println(dataName[i] + ": { ");
+            for (byte dataByte : data[i]) {
+                System.out.println(dataByte + ", ");
+            }
+            System.out.println("}");
+        }
+    }
+
     public static void main(String[] args){
         System.out.println("Hello Space!");
         Main app = new Main();
         app.whoAmI();
+        app.readData();
     }
 }
